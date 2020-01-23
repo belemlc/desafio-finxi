@@ -15,7 +15,17 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'pecas'], function () {
+        Route::get('', 'PecaController@index')->name('lista-pecas');
+        Route::get('{id}', 'PecaController@show')->name('visualiza-peca');
+        Route::post('', 'PecaController@store')->name('cria-peca');
+        Route::put('{id}', 'PecaController@update')->name('atualiza-peca');
+        Route::put('{id}/finaliza', 'PecaController@finaliza')->name('finaliza-peca');
+        Route::delete('{id}', 'PecaController@destroy')->name('exclui-peca');
+    });
 });

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -26,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'role_id'
     ];
 
     /**
@@ -40,6 +41,6 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo('roles', 'id');
+        return $this->belongsTo(Role::class, 'role_id');
     }
 }

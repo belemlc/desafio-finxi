@@ -19,12 +19,11 @@ class CreatePecasTable extends Migration
             $table->unsignedBigInteger('contato_id');
             $table->unsignedBigInteger('endereco_id');
             $table->string('descricao');
-            $table->enum('status', ['aberto', 'finalizado'])
-                ->comment('status aberto ou status finalizado');
+            $table->enum('status', ['aberto', 'finalizado'])->default('aberto');
             //
             $table->foreign('anunciante_id')->references('id')->on('users');
-            $table->foreign('contato_id')->references('id')->on('contatos');
-            $table->foreign('endereco_id')->references('id')->on('enderecos');
+            $table->foreign('contato_id')->references('id')->on('contatos')->onDelete('cascade');
+            $table->foreign('endereco_id')->references('id')->on('enderecos')->onDelete('cascade');
             $table->timestamps();
         });
     }
