@@ -121,3 +121,13 @@ Luiz Carlos Belem `<belemlc@gmail.com>`
     Na documentação fala sobre o usuário com o papel de administrador acessar a interface
     do usuário, não diz sobre o anunciante acessar, deixe ambos acessarem por questão de tempo e
     e para fins de entendimento da aplicação.  
+
+## Testes Unitários
+
+    Foram criado dois testes unitários usando um usuário com o papel de anunciante já pré cadastrado no sistema
+    Existem duas situações de teste:
+    1 - Listar todas as peças/anuncios de um usuário
+    2 - Cria um anuncio usando o usuário com o papel de anunciante
+    
+    para executar o teste, será necessário rodar o seguinte comando abaixo
+    > docker exec -it app vendor/bin/phpunit tests/Feature/PecaTest.php

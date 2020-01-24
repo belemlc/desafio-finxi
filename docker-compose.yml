@@ -7,9 +7,9 @@ services:
       context: .
       dockerfile: ./Dockerfile
     container_name: app
-    entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
+    entrypoint: dockerize -template ./.docker/app/.env:.env -template ./.docker/app/.env:.env.testing  -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
     tty: true
-    environment: 
+    environment:
       - DB_HOST=db
       - DB_DATABASE=finxi
       - DB_USERNAME=root
