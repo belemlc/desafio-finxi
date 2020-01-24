@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "10953f39-9fa0-4298-b323-650d4b51d394",
+		"name": "Finxi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "anunciante@finxi.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "* obrigatório",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"description": "* obrigatório",
+									"type": "text"
+								},
+								{
+									"key": "role_id",
+									"value": "",
+									"description": "* ->1 para Administrador ou 2 para Anunciante ",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"description": "* obrigatório",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Cria um novo usuário"
+					},
+					"response": []
+				}
+			],
+			"description": "Açoes do usuário",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Pecas",
+			"item": [
+				{
+					"name": "Listar Anuncios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}} ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pecas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pecas"
+							]
+						},
+						"description": "Cria um novo usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "Visualiza Anuncio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}} ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pecas/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pecas",
+								"{id}"
+							]
+						},
+						"description": "Cria um novo usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Anuncio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"\",\n\t\"endereco\": {\n\t\t\"logradouro\": \"\",\n\t\t\"cep\": \"\",\n\t\t\"numero\": 0,\n\t\t\"bairro\": \"\",\n\t\t\"cidade\": \"\",\n\t\t\"estado\": \"\"\n\t},\n\t\"contato\": {\n\t\t\"celular\": \"\",\n\t\t\"telefone\": \"\",\n\t\t\"email\": \"\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pecas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pecas"
+							]
+						},
+						"description": "Criar um nono anuncio"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza Anuncio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pecas/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pecas",
+								"{id}"
+							]
+						},
+						"description": "Criar um nono anuncio"
+					},
+					"response": []
+				},
+				{
+					"name": "Finaliza Anuncio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pecas/{id}/finaliza",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pecas",
+								"{id}",
+								"finaliza"
+							]
+						},
+						"description": "Criar um nono anuncio"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Anuncio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pecas/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pecas",
+								"{id}"
+							]
+						},
+						"description": "Criar um nono anuncio"
+					},
+					"response": []
+				}
+			],
+			"description": "Ações do anunciante",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
