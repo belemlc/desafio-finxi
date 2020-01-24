@@ -1,1 +1,23 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.status-finalizado {
+    background: url('images/baseline-check_circle_outline.svg') no-repeat;
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.status-aberto {
+    background: url('images/baseline-highlight_off.svg') no-repeat;
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
